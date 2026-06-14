@@ -1,0 +1,121 @@
+:root {
+    --white: #ffefef;
+    --dark-gray: #252525;
+    --darker-gray: #1c1c1c;
+    --black: #0b0b0b;
+    --red: #da0e0e;
+    --dark-red: #af0b0b;
+    --bkgd-color: light-dark(var(--white), var(--black));
+    --container-bkgd-color: light-dark(var(--white), var(--dark-gray));
+    --text-color: light-dark(var(--black), var(--white));
+    --base-text-size: 1rem;
+    --base-gap: 0.5rem;
+    --base-radius: 1rem;
+}
+
+html {
+    box-sizing: border-box;
+    color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: var(--base-text-size);
+    color: var(--text-color);
+    background: var(--bkgd-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(var(--base-radius) * 2);
+    margin: calc(var(--base-radius) * 8) 0 0 0;
+}
+
+body h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-gap) * 2);
+    width: min(100%, 22rem);
+}
+
+h1, h2, h3, h4, p {
+    margin: 0;
+}
+
+.timer {
+    background-color: var(--container-bkgd-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--base-gap);
+    padding: calc(var(--base-gap) * 3) var(--base-gap);
+    border-radius: var(--base-radius);
+}
+
+.timer-modes {
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--base-gap) * 0.5);
+    text-align: center;
+}
+
+.timer-mode {
+    background-color: transparent;
+    padding: calc(var(--base-gap) * 0.5) calc(var(--base-gap) * 1.5);
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.timer-mode:hover {
+    background-color: var(--darker-gray);
+}
+
+.timer-mode.is-active,
+.timer-mode[aria-pressed="true"] {
+    font-weight: bold;
+    border-color: currentColor;
+}
+
+.timer-display {
+    font-size: calc(var(--base-text-size) * 5);
+    font-weight: bold;
+}
+
+.timer-button {
+    background-color: var(--red);
+    margin-top: calc(var(--base-gap) * 2);
+    padding: var(--base-gap) calc(var(--base-gap) * 4);
+    border: 0;
+    border-radius: calc(var(--base-radius) * 0.5);
+    box-shadow: 0 calc(var(--base-radius) * 0.3) var(--black);
+    cursor: pointer;
+}
+
+.timer-button:hover {
+    background-color: var(--dark-red);
+}
+
+.timer-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 calc(var(--base-radius) * 0.15) var(--black);
+}
+
+.task-list {
+    margin-top: calc(var(--base-gap) * 5);
+}

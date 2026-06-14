@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="icon" type="image/x-icon" href="public/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1 class="timer-title">Pomodoro Timer</h1>
+    <section class="timer" aria-label="Pomodoro timer">
+      <div class="timer-modes" role="group" aria-label="Timer modes">
+        <button class="timer-mode is-active" type="button" data-mode="study" aria-pressed="true">Study</button>
+        <button class="timer-mode" type="button" data-mode="short-break" aria-pressed="false">Short Break</button>
+        <button class="timer-mode" type="button" data-mode="long-break" aria-pressed="false">Long Break</button>
+      </div>
+      <div class="timer-display" aria-live="polite" aria-atomic="true">
+        <span id="timer-text">50:00</span>
+      </div>
+      <button class="timer-button" type="button">Start</button>
+    </section>
+    <div class="task-list">
+      <h2>Tasks</h2>
+      <ul class="task-list-items">
+        <li class="task-list-item">
+          <p>Study Data Structures & Algorithms</p>
+        </li>
+        <li class="task-list-item">
+          <p>Work on Portfolio Website</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
