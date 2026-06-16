@@ -1,6 +1,6 @@
 const timerText = document.querySelector("#timer-text");
 const startButton = document.querySelector(".timer-button");
-const modeButtons = Array.from(document.querySelectorAll(".timer-mode"));
+const modeButtons = document.querySelectorAll(".timer-mode");
 
 const MODE_DURATIONS = {
     "study": 50 * 60,

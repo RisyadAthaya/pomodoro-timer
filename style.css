@@ -5,9 +5,9 @@
     --black: #0b0b0b;
     --red: #da0e0e;
     --dark-red: #af0b0b;
-    --bkgd-color: light-dark(var(--white), var(--black));
-    --container-bkgd-color: light-dark(var(--white), var(--dark-gray));
-    --text-color: light-dark(var(--black), var(--white));
+    --bkgd-color: var(--black);
+    --container-bkgd-color: var(--dark-gray);
+    --text-color: var(--white);
     --base-text-size: 1rem;
     --base-gap: 0.5rem;
     --base-radius: 1rem;
@@ -15,7 +15,6 @@
 
 html {
     box-sizing: border-box;
-    color-scheme: light dark;
 }
 
 *,
