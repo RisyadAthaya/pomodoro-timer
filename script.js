@@ -29,7 +29,8 @@ function stopTimer() {
         intervalId = null;
     }
 
-    startButton.disabled = false;
+    startButton.removeEventListener("click", stopTimer);
+    startButton.addEventListener("click", startTimer);
     startButton.textContent = "Start";
 }
 
@@ -59,8 +60,9 @@ function startTimer() {
         renderTimer();
     }
 
-    startButton.disabled = true;
-    startButton.textContent = "Running";
+    startButton.removeEventListener("click", startTimer);
+    startButton.addEventListener("click", stopTimer);
+    startButton.textContent = "Pause";
 
     intervalId = window.setInterval(() => {
         remainingSeconds -= 1;
