@@ -3,7 +3,7 @@ const startButton = document.querySelector(".timer-button");
 const modeButtons = document.querySelectorAll(".timer-mode");
 
 const MODE_DURATIONS = {
-    "study": 50 * 60,
+    "study": 0.05 * 60,
     "short-break": 10 * 60,
     "long-break": 25 * 60,
 };
@@ -29,13 +29,22 @@ function stopTimer() {
         intervalId = null;
     }
 
+    startButton.style.backgroundColor = "var(--timer-button-color)";
+    startButton.style.color = "var(--text-color)";
+}
+
+function pauseTimer() {
+    stopTimer();
     startButton.removeEventListener("click", stopTimer);
     startButton.addEventListener("click", startTimer);
-    startButton.textContent = "Start";
+    startButton.textContent = "RESUME";
 }
 
 function finishTimer() {
     stopTimer();
+    startButton.removeEventListener("click", stopTimer);
+    startButton.addEventListener("click", startTimer);
+    startButton.textContent = "START";
 
     if (activeMode === "study") {
         activeMode = "short-break";
@@ -61,8 +70,11 @@ function startTimer() {
     }
 
     startButton.removeEventListener("click", startTimer);
-    startButton.addEventListener("click", stopTimer);
-    startButton.textContent = "Pause";
+    startButton.addEventListener("click", pauseTimer);
+    startButton.textContent = "PAUSE";
+
+    startButton.style.backgroundColor = "var(--container-bkgd-color-light)";
+    startButton.style.color = "var(--text-color-dark)";
 
     intervalId = window.setInterval(() => {
         remainingSeconds -= 1;

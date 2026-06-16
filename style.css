@@ -7,7 +7,10 @@
     --dark-red: #af0b0b;
     --bkgd-color: var(--black);
     --container-bkgd-color: var(--dark-gray);
+    --container-bkgd-color-light: var(--white);
     --text-color: var(--white);
+    --text-color-dark: var(--dark-red);
+    --timer-button-color: var(--red);
     --base-text-size: 1rem;
     --base-gap: 0.5rem;
     --base-radius: 1rem;
@@ -97,13 +100,14 @@ h1, h2, h3, h4, p {
 }
 
 .timer-button {
-    background-color: var(--red);
+    background-color: var(--timer-button-color);
     margin-top: calc(var(--base-gap) * 2);
     padding: var(--base-gap) calc(var(--base-gap) * 4);
     border: 0;
     border-radius: calc(var(--base-radius) * 0.5);
     box-shadow: 0 calc(var(--base-radius) * 0.3) var(--black);
     cursor: pointer;
+    font-weight: bold;
 }
 
 .timer-button:hover {
