@@ -100,6 +100,7 @@ modeButtons.forEach(button => {
         activeMode = button.dataset.mode;
         updateModeButtons();
         stopTimer();
+        startButton.textContent = "START";
 
         remainingSeconds = MODE_DURATIONS[button.dataset.mode];
         renderTimer();
