@@ -3,7 +3,7 @@ const startButton = document.querySelector(".timer-button");
 const modeButtons = document.querySelectorAll(".timer-mode");
 
 const MODE_DURATIONS = {
-    "study": 0.05 * 60,
+    "study": 50 * 60,
     "short-break": 10 * 60,
     "long-break": 25 * 60,
 };
