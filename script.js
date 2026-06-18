@@ -1,5 +1,6 @@
 const timerText = document.querySelector("#timer-text");
 const startButton = document.querySelector(".timer-button");
+const skipButton = document.querySelector(".skip-timer-button");
 const modeButtons = document.querySelectorAll(".timer-mode");
 
 const MODE_DURATIONS = {
@@ -29,8 +30,17 @@ function stopTimer() {
         intervalId = null;
     }
 
+    // Erase the skip timer button
+    skipButton.style.display = "none";
+
     startButton.style.backgroundColor = "var(--timer-button-color)";
     startButton.style.color = "var(--text-color)";
+}
+
+function changeModeTimer() {
+    stopTimer();
+    startButton.removeEventListener("click", stopTimer);
+    startButton.addEventListener("click", startTimer);
 }
 
 function pauseTimer() {
@@ -69,6 +79,9 @@ function startTimer() {
         renderTimer();
     }
 
+    // Display the skip timer button
+    skipButton.style.display = "inline";
+
     startButton.removeEventListener("click", startTimer);
     startButton.addEventListener("click", pauseTimer);
     startButton.textContent = "PAUSE";
@@ -99,7 +112,7 @@ modeButtons.forEach(button => {
     button.addEventListener("click", () => {
         activeMode = button.dataset.mode;
         updateModeButtons();
-        stopTimer();
+        changeModeTimer();
         startButton.textContent = "START";
 
         remainingSeconds = MODE_DURATIONS[button.dataset.mode];
@@ -108,6 +121,26 @@ modeButtons.forEach(button => {
 });
 
 startButton.addEventListener("click", startTimer);
+skipButton.addEventListener("click", finishTimer);
 
 renderTimer();
 updateModeButtons();
+
+// Media query for timer mode buttons
+const timerModesText = document.querySelectorAll(".timer-mode");
+const mediaQuery = window.matchMedia("(max-width: 480px)");
+
+function handleScreenChange(e) {
+    if (e.matches) {
+        // Screen is 480px wide or less
+        timerModesText[1].textContent = "Short";
+        timerModesText[2].textContent = "Long";
+    } else {
+        // Screen is wider than 480px
+        timerModesText[1].textContent = "Short Break";
+        timerModesText[2].textContent = "Long Break";
+    }
+}
+
+mediaQuery.addEventListener("change", handleScreenChange);
+handleScreenChange(mediaQuery);

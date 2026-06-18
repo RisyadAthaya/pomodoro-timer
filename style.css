@@ -11,7 +11,8 @@
     --text-color: var(--white);
     --text-color-dark: var(--dark-red);
     --timer-button-color: var(--red);
-    --base-text-size: 1rem;
+    --skip-timer-button-color: var(--white);
+    --base-text-size: 1.2rem;
     --base-gap: 0.5rem;
     --base-radius: 1rem;
 }
@@ -40,7 +41,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: calc(var(--base-radius) * 2);
-    margin: calc(var(--base-radius) * 8) 0 0 0;
+    margin: calc(var(--base-radius) * 4) 0 0 0;
 }
 
 body h1 {
@@ -50,6 +51,7 @@ body h1 {
 main {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: calc(var(--base-gap) * 2);
     width: min(100%, 22rem);
 }
@@ -63,8 +65,10 @@ h1, h2, h3, h4, p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 325px;
+    width: 400px;
     gap: var(--base-gap);
-    padding: calc(var(--base-gap) * 3) var(--base-gap);
+    padding: calc(var(--base-gap) * 3) calc(var(--base-gap) * 3);
     border-radius: var(--base-radius);
 }
 
@@ -99,14 +103,22 @@ h1, h2, h3, h4, p {
     font-weight: bold;
 }
 
+.timer-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: calc(var(--base-gap) * 2);
+    gap: var(--base-gap);
+}
+
 .timer-button {
     background-color: var(--timer-button-color);
-    margin-top: calc(var(--base-gap) * 2);
-    padding: var(--base-gap) calc(var(--base-gap) * 4);
+    padding: calc(var(--base-gap) * 1.5) calc(var(--base-gap) * 5);
     border: 0;
     border-radius: calc(var(--base-radius) * 0.5);
     box-shadow: 0 calc(var(--base-radius) * 0.3) var(--black);
     cursor: pointer;
+    font-size: calc(var(--base-text-size) * 1.2);
     font-weight: bold;
 }
 
@@ -119,6 +131,32 @@ h1, h2, h3, h4, p {
     box-shadow: 0 calc(var(--base-radius) * 0.15) var(--black);
 }
 
+.skip-timer-button {
+    display: none;
+    background: var(--timer-button-color);
+    border: none;
+    border-radius: calc(var(--base-radius) * 0.5);
+    padding: calc(var(--base-gap) * 0.5) calc(var(--base-gap) * 0.5);
+    width: 4rem;
+    cursor: pointer;
+    box-shadow: 0 calc(var(--base-radius) * 0.3) var(--black);
+}
+
+.skip-timer-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 calc(var(--base-radius) * 0.15) var(--black);
+}
+
+.skip-timer-svg {
+    width: 40%;
+    height: 40%;
+    fill: var(--skip-timer-button-color);
+}
+
 .task-list {
     margin-top: calc(var(--base-gap) * 5);
+}
+
+@media (min-width: 480px) {
+
 }
