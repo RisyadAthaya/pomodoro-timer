@@ -2,6 +2,7 @@ const timerText = document.querySelector("#timer-text");
 const startButton = document.querySelector(".timer-button");
 const skipButton = document.querySelector(".skip-timer-button");
 const modeButtons = document.querySelectorAll(".timer-mode");
+const notificationSound = new Audio("public/notification-sound.mp3");
 
 const MODE_DURATIONS = {
     "study": 50 * 60,
@@ -67,6 +68,7 @@ function finishTimer() {
 
     updateModeButtons();
     renderTimer();
+    notificationSound.play();
 }
 
 function startTimer() {
