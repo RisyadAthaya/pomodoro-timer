@@ -1,6 +1,7 @@
 const timerText = document.querySelector("#timer-text");
-const startButton = document.querySelector(".timer-button");
+const startButton = document.querySelector(".start-timer-button");
 const skipButton = document.querySelector(".skip-timer-button");
+const settingsButton = document.querySelector(".settings-timer-button");
 const modeButtons = document.querySelectorAll(".timer-mode");
 const notificationSound = new Audio("public/notification-sound.mp3");
 
@@ -32,7 +33,7 @@ function stopTimer() {
     }
 
     // Erase the skip timer button
-    skipButton.style.display = "none";
+    skipButton.style.visibility = "hidden";
 
     startButton.style.backgroundColor = "var(--timer-button-color)";
     startButton.style.color = "var(--text-color)";
@@ -42,6 +43,9 @@ function changeModeTimer() {
     stopTimer();
     startButton.removeEventListener("click", stopTimer);
     startButton.addEventListener("click", startTimer);
+
+    // Display the settings button
+    settingsButton.style.visibility = "visible";
 }
 
 function pauseTimer() {
@@ -59,12 +63,15 @@ function finishTimer() {
 
     if (activeMode === "study") {
         activeMode = "short-break";
-        remainingSeconds = MODE_DURATIONS["short-break"];
+        remainingSeconds = MODE_DURATIONS[activeMode];
 
     } else {
         activeMode = "study";
         remainingSeconds = MODE_DURATIONS[activeMode];
     }
+
+    // Display the settings button
+    settingsButton.style.visibility = "visible";
 
     updateModeButtons();
     renderTimer();
@@ -81,8 +88,9 @@ function startTimer() {
         renderTimer();
     }
 
-    // Display the skip timer button
-    skipButton.style.display = "inline";
+    // Display the skip button and hide the settings button
+    skipButton.style.visibility = "visible";
+    settingsButton.style.visibility = "hidden";
 
     startButton.removeEventListener("click", startTimer);
     startButton.addEventListener("click", pauseTimer);

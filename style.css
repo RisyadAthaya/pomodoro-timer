@@ -56,7 +56,11 @@ main {
     width: min(100%, 22rem);
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
     margin: 0;
 }
 
@@ -111,28 +115,30 @@ h1, h2, h3, h4, p {
     gap: var(--base-gap);
 }
 
-.timer-button {
+.start-timer-button {
+    width: 10rem;
     background-color: var(--timer-button-color);
-    padding: calc(var(--base-gap) * 1.5) calc(var(--base-gap) * 5);
+    padding: calc(var(--base-gap) * 1.5) calc(var(--base-gap) * 3);
     border: 0;
     border-radius: calc(var(--base-radius) * 0.5);
     box-shadow: 0 calc(var(--base-radius) * 0.3) var(--black);
     cursor: pointer;
+    white-space: nowrap;
     font-size: calc(var(--base-text-size) * 1.2);
     font-weight: bold;
 }
 
-.timer-button:hover {
+.start-timer-button:hover {
     background-color: var(--dark-red);
 }
 
-.timer-button:active {
+.start-timer-button:active {
     transform: translateY(1px);
     box-shadow: 0 calc(var(--base-radius) * 0.15) var(--black);
 }
 
-.skip-timer-button {
-    display: none;
+.skip-timer-button,
+.settings-timer-button {
     background: var(--timer-button-color);
     border: none;
     border-radius: calc(var(--base-radius) * 0.5);
@@ -142,12 +148,18 @@ h1, h2, h3, h4, p {
     box-shadow: 0 calc(var(--base-radius) * 0.3) var(--black);
 }
 
-.skip-timer-button:active {
+.skip-timer-button {
+    visibility: hidden;
+}
+
+.skip-timer-button:active,
+.settings-timer-button:active {
     transform: translateY(1px);
     box-shadow: 0 calc(var(--base-radius) * 0.15) var(--black);
 }
 
-.skip-timer-svg {
+.skip-timer-svg,
+.settings-timer-svg {
     width: 40%;
     height: 40%;
     fill: var(--skip-timer-button-color);
