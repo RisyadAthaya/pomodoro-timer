@@ -5,7 +5,7 @@ const settingsButton = document.querySelector(".settings-timer-button");
 const modeButtons = document.querySelectorAll(".timer-mode");
 const notificationSound = new Audio("public/notification-sound.mp3");
 
-const MODE_DURATIONS = {
+let MODE_DURATIONS = {
     "study": 50 * 60,
     "short-break": 10 * 60,
     "long-break": 25 * 60,
@@ -136,6 +136,23 @@ skipButton.addEventListener("click", finishTimer);
 renderTimer();
 updateModeButtons();
 
+
+// Handle settings modal
+const settingsModal = document.querySelector(".settings-modal");
+const closeSettingsButton = document.querySelector(".close-settings-button");
+
+// Open the settings modal with settings button
+settingsButton.addEventListener('click', () => {
+    settingsModal.showModal();
+});
+
+// Close the modal with the close button
+closeSettingsButton.addEventListener('click', () => {
+    settingsModal.close();
+    renderTimer();
+});
+
+
 // Media query for timer mode buttons
 const timerModesText = document.querySelectorAll(".timer-mode");
 const mediaQuery = window.matchMedia("(max-width: 480px)");
@@ -154,3 +171,42 @@ function handleScreenChange(e) {
 
 mediaQuery.addEventListener("change", handleScreenChange);
 handleScreenChange(mediaQuery);
+
+
+// Handle durations input based on timer mode
+const durationInputs = document.querySelectorAll(".timer-duration-input");
+
+// Hard-enforce input range limits
+durationInputs.forEach(input => {
+    let inputTimerMode;
+    switch (input.id) {
+        case "timer-duration-study":
+            inputTimerMode = "study";
+            break;
+        case "timer-duration-short-break":
+            inputTimerMode = "short-break";
+            break;
+        case "timer-duration-long-break":
+            inputTimerMode = "long-break";
+    }
+
+    // Set the default value of the inputs
+    input.defaultValue = MODE_DURATIONS[inputTimerMode] / 60;
+
+    const min = parseFloat(input.min);
+    const max = parseFloat(input.max);
+
+    input.addEventListener("input", function () {
+        if (input.value === '') return;
+
+        let value = parseFloat(input.value);
+        if (value < min) {
+            input.value = min;
+        } else if (value > max) {
+            input.value = max;
+        }
+
+        MODE_DURATIONS[inputTimerMode] = input.value * 60;
+        remainingSeconds = MODE_DURATIONS[activeMode];
+    })
+});

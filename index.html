@@ -42,5 +42,27 @@
       </ul>
     </div>
   </main>
+  <dialog class="settings-modal" aria-label="Settings Modal">
+    <div class="settings-modal-content">
+      <header class="settings-modal-header">
+        <h2 class="settings-title">Settings</h2>
+        <button class="close-settings-button" type="button" aria-label="Close Settings Button">X</button>
+      </header>
+      <div class="timer-durations-settings">
+        <div class="timer-duration-input-group">
+          <label for="timer-duration-study" class="timer-duration-input-label">Study</label>
+          <input type="number" class="timer-duration-input" id="timer-duration-study" min="1" max="600">
+        </div>
+        <div class="timer-duration-input-group">
+          <label for="timer-duration-study" class="timer-duration-input-label">Short Break</label>
+          <input type="number" class="timer-duration-input" id="timer-duration-short-break" min="1" max="600">
+        </div>
+        <div class="timer-duration-input-group">
+          <label for="timer-duration-study" class="timer-duration-input-label">Long Break</label>
+          <input type="number" class="timer-duration-input" id="timer-duration-long-break" min="1" max="600">
+        </div>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>

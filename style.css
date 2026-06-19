@@ -1,5 +1,7 @@
 :root {
     --white: #ffefef;
+    --more-transparent-gray: rgba(0, 0, 0, 0.1);
+    --semi-transparent-gray: rgba(0, 0, 0, 0.5);
     --dark-gray: #252525;
     --darker-gray: #1c1c1c;
     --black: #0b0b0b;
@@ -10,6 +12,7 @@
     --container-bkgd-color-light: var(--white);
     --text-color: var(--white);
     --text-color-dark: var(--dark-red);
+    --text-color-dark-gray: var(--semi-transparent-gray);
     --timer-button-color: var(--red);
     --skip-timer-button-color: var(--white);
     --base-text-size: 1.2rem;
@@ -54,6 +57,10 @@ main {
     align-items: center;
     gap: calc(var(--base-gap) * 2);
     width: min(100%, 22rem);
+}
+
+dialog::backdrop {
+    background-color: var(--semi-transparent-gray);
 }
 
 h1,
@@ -139,7 +146,7 @@ p {
 
 .skip-timer-button,
 .settings-timer-button {
-    background: var(--timer-button-color);
+    background-color: var(--timer-button-color);
     border: none;
     border-radius: calc(var(--base-radius) * 0.5);
     padding: calc(var(--base-gap) * 0.5) calc(var(--base-gap) * 0.5);
@@ -167,6 +174,75 @@ p {
 
 .task-list {
     margin-top: calc(var(--base-gap) * 5);
+}
+
+.settings-modal {
+    border: none;
+    border-radius: calc(var(--base-radius) * 0.5);
+    padding: calc(var(--base-gap) * 2) var(--base-gap) calc(var(--base-gap) * 5) var(--base-gap);
+    min-width: 325px;
+    width: 350px;
+    background-color: var(--white);
+}
+
+.settings-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--base-gap) * 3);
+}
+
+.settings-modal-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+
+.settings-title {
+    font-size: calc(var(--base-text-size) * 1.2);
+    text-align: center;
+    grid-column-start: 2;
+}
+
+.close-settings-button {
+    width: 2rem;
+    background-color: inherit;
+    font-size: calc(var(--base-text-size) * 0.8);
+    font-weight: bold;
+    border: none;
+    border-radius: calc(var(--base-radius) * 0.5);
+    padding: calc(var(--base-gap) * 0.5) calc(var(--base-gap) * 0.5);
+    cursor: pointer;
+    justify-self: end;
+}
+
+.close-settings-button:hover {
+    background-color: var(--more-transparent-gray);
+}
+
+.timer-durations-settings {
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--base-gap) * 2);
+}
+
+.timer-duration-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--base-gap) * 0.5);
+}
+
+.timer-duration-input-label {
+    font-size: calc(var(--base-text-size) * 0.65);
+    font-weight: bold;
+    color: var(--text-color-dark-gray);
+}
+
+.timer-duration-input {
+    border: none;
+    border-radius: calc(var(--base-radius) * 0.25);
+    width: calc(var(--base-gap) * 10);
 }
 
 @media (min-width: 480px) {
