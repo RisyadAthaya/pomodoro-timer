@@ -35,6 +35,7 @@ function stopTimer() {
     // Erase the skip timer button
     skipButton.style.visibility = "hidden";
 
+    // Change the color to normal
     startButton.style.backgroundColor = "var(--timer-button-color)";
     startButton.style.color = "var(--text-color)";
 }
@@ -96,6 +97,7 @@ function startTimer() {
     startButton.addEventListener("click", pauseTimer);
     startButton.textContent = "PAUSE";
 
+    // Change the color to the pause button color
     startButton.style.backgroundColor = "var(--container-bkgd-color-light)";
     startButton.style.color = "var(--text-color-dark)";
 
