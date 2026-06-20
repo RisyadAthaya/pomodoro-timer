@@ -238,4 +238,54 @@ p {
 }
 
 @media (max-width: 480px) {
+    :root {
+        --base-text-size: 1rem;
+    }
+
+    body {
+        padding: calc(var(--base-radius) * 2) 0 0 0;
+        margin: calc(var(--base-radius) * 4) 0 0 0;
+    }
+
+    .timer {
+        min-width: 200px;
+        width: min(80vw, 280px);
+        padding: calc(var(--base-gap) * 2) var(--base-gap);
+    }
+
+    .timer-display {
+        font-size: calc(var(--base-text-size) * 4);
+    }
+
+    .timer-buttons {
+        margin-top: 0;
+    }
+
+    .start-timer-button {
+        width: 7rem;
+        padding: var(--base-gap) calc(var(--base-gap) * 3);
+    }
+
+    .skip-timer-button,
+    .settings-timer-button {
+        width: 3rem;
+        padding: calc(var(--base-gap) * 0.5) calc(var(--base-gap) * 0.5);
+    }
+
+    .settings-modal {
+        padding: calc(var(--base-gap) * 2) var(--base-gap) calc(var(--base-gap) * 5) var(--base-gap);
+        min-width: 275px;
+        width: 300px;
+    }
+
+    .timer-duration-input {
+        border: none;
+        border-radius: calc(var(--base-radius) * 0.25);
+        width: calc(var(--base-gap) * 8);
+    }
+
+    .task-list {
+        margin-top: 0;
+        padding: calc(var(--base-gap) * 4);
+    }
 }
