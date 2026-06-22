@@ -1,5 +1,6 @@
 :root {
     --white: #ffefef;
+    --light-grey: #e8d8d8;
     --more-transparent-gray: rgba(0, 0, 0, 0.1);
     --semi-transparent-gray: rgba(0, 0, 0, 0.5);
     --dark-gray: #252525;
@@ -14,6 +15,8 @@
     --text-color-dark: var(--dark-red);
     --text-color-dark-gray: var(--semi-transparent-gray);
     --timer-button-color: var(--red);
+    --start-timer-button-color: var(--red);
+    --start-timer-button-color-hover: var(--dark-red);
     --skip-timer-svg-color: var(--white);
     --base-text-size: 1.2rem;
     --base-gap: 0.5rem;
@@ -140,11 +143,16 @@ p {
 }
 
 .start-timer-button {
+    background-color: var(--start-timer-button-color);
     width: 10rem;
     padding: calc(var(--base-gap) * 1.5) calc(var(--base-gap) * 3);
     white-space: nowrap;
     font-size: calc(var(--base-text-size) * 1.2);
     font-weight: bold;
+}
+
+.start-timer-button:hover {
+    background-color: var(--start-timer-button-color-hover);
 }
 
 .skip-timer-button,

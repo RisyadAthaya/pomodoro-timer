@@ -36,7 +36,8 @@ function stopTimer() {
     skipButton.style.visibility = "hidden";
 
     // Change the color to normal
-    startButton.style.backgroundColor = "var(--timer-button-color)";
+    startButton.style.setProperty("--start-timer-button-color", "var(--timer-button-color)");
+    startButton.style.setProperty("--start-timer-button-color-hover", "var(--dark-red)");
     startButton.style.color = "var(--text-color)";
 }
 
@@ -98,7 +99,8 @@ function startTimer() {
     startButton.textContent = "PAUSE";
 
     // Change the color to the pause button color
-    startButton.style.backgroundColor = "var(--container-bkgd-color-light)";
+    startButton.style.setProperty("--start-timer-button-color", "var(--white)");
+    startButton.style.setProperty("--start-timer-button-color-hover", "var(--light-grey)");
     startButton.style.color = "var(--text-color-dark)";
 
     intervalId = window.setInterval(() => {
